@@ -14,159 +14,160 @@ import java.util.Scanner;
 import java.text.Format;
 
 /*
- * λψβς : τεπχφιδ ωμεχηϊ ξλμ χεαυ ωατεψξθ πϊεπιν μΰεαιιχθ δεειτιι διΰ πςζψϊ ατεπχφιδ ωξωιβδ μδ λϊεαϊ λγι μςωεϊ ΰϊ ζδ 
- * ξδ ΰπι δεμκ μςωεϊ : μχηϊ ΰϊ λμ δξςψκ δγιπΰξι ωμι ωξλιμ ΰεαιιχθιν ωμ εει τι εαςζψϊε ΰπι δεμκ μωτεκ δλμ μχεαυ ΰηγ ωΰεϊε ΰπι ΰξιιο μτι δγψιωεϊ
- *  ωμα ωπι : ΰπι δεμκ μδτεκ ΰϊ δχεαυ δζδ μχεαυ χιι ΰξ ΰμ 
+ * Χ›Χ¨Χ’ΧΆ : Χ¤Χ•Χ Χ§Χ¦Χ™Χ” Χ©ΧΧ•Χ§Χ—Χª ΧΧ›Χ Χ§Χ•Χ‘Χ¥ Χ©Χ‘Χ¤Χ•Χ¨ΧΧ Χ ΧªΧ•Χ Χ™Χ ΧΧΧ•Χ‘Χ™Χ™Χ§Χ Χ”Χ•Χ•Χ™Χ¤Χ™Χ™ Χ”Χ™Χ Χ ΧΆΧ–Χ¨Χª Χ‘Χ¤Χ•Χ Χ§Χ¦Χ™Χ” Χ©ΧΧ©Χ™Χ’Χ” ΧΧ” Χ›ΧªΧ•Χ‘Χª Χ›Χ“Χ™ ΧΧΆΧ©Χ•Χª ΧΧª Χ–Χ” 
+ * ΧΧ” ΧΧ Χ™ Χ”Χ•ΧΧ ΧΧΆΧ©Χ•Χª : ΧΧ§Χ—Χª ΧΧª Χ›Χ Χ”ΧΧΆΧ¨Χ Χ”Χ“Χ™Χ ΧΧΧ™ Χ©ΧΧ™ Χ©ΧΧ›Χ™Χ ΧΧ•Χ‘Χ™Χ™Χ§ΧΧ™Χ Χ©Χ Χ•Χ•Χ™ Χ¤Χ™ Χ•Χ‘ΧΆΧ–Χ¨ΧªΧ• ΧΧ Χ™ Χ”Χ•ΧΧ ΧΧ©Χ¤Χ•Χ Χ”Χ›Χ ΧΧ§Χ•Χ‘Χ¥ ΧΧ—Χ“ Χ©ΧΧ•ΧªΧ• ΧΧ Χ™ ΧΧΧ™Χ™Χ ΧΧ¤Χ™ Χ”Χ“Χ¨Χ™Χ©Χ•Χª
+ *  Χ©ΧΧ‘ Χ©Χ Χ™ : ΧΧ Χ™ Χ”Χ•ΧΧ ΧΧ”Χ¤Χ•Χ ΧΧª Χ”Χ§Χ•Χ‘Χ¥ Χ”Χ–Χ” ΧΧ§Χ•Χ‘Χ¥ Χ§Χ™Χ™ ΧΧ ΧΧ 
  *  
- * ωΰμεϊ μψιλεζ 
- * ΰχρτωιο, ξδ δξωςξεϊ ωμ ρθθιχ ατεπχφιδ ,γεβξΰ μβ'ΰεεδ γεχ πλεο ,ΰϊψ πηξγ μΰιξτεψθιν 
+ * Χ©ΧΧΧ•Χª ΧΧ¨Χ™Χ›Χ•Χ– 
+ * ΧΧ§Χ΅Χ¤Χ©Χ™Χ, ΧΧ” Χ”ΧΧ©ΧΆΧΧ•Χª Χ©Χ Χ΅ΧΧΧ™Χ§ Χ‘Χ¤Χ•Χ Χ§Χ¦Χ™Χ” ,Χ“Χ•Χ’ΧΧ ΧΧ’'ΧΧ•Χ•Χ” Χ“Χ•Χ§ Χ Χ›Χ•Χ ,ΧΧªΧ¨ Χ Χ—ΧΧ“ ΧΧΧ™ΧΧ¤Χ•Χ¨ΧΧ™Χ 
  * 
  * 
- *  δωΰμδ ΰν μχηϊ ξδ ωΰπι ψεφδ ξδχεαυ ΰε μξηεχ αε γαψιν δΰν αλμμ ΰτωψ μξηεχ γαψιν ΰικ μδερισ ΰϊ δΰιιγιι
+ *  Χ”Χ©ΧΧΧ” ΧΧ ΧΧ§Χ—Χª ΧΧ” Χ©ΧΧ Χ™ Χ¨Χ•Χ¦Χ” ΧΧ”Χ§Χ•Χ‘Χ¥ ΧΧ• ΧΧΧ—Χ•Χ§ Χ‘Χ• Χ“Χ‘Χ¨Χ™Χ Χ”ΧΧ Χ‘Χ›ΧΧ ΧΧ¤Χ©Χ¨ ΧΧΧ—Χ•Χ§ Χ“Χ‘Χ¨Χ™Χ ΧΧ™Χ ΧΧ”Χ•Χ΅Χ™Χ£ ΧΧª Χ”ΧΧ™Χ™Χ“Χ™Χ™
  */
 
 public class file2csv {
+	 static ArrayList<WiFiList> blabla = new ArrayList();
 	// this function get directoryPath and return the cvsFile in the Folder
-	public static ArrayList<String> ReadDirectory(String directoryPath) {// δτεπχφιδ
-																			// ϊηζιψ
-																			// ψωιξδ
-																			// ωμ
-																			// χαφι
-																			// ριΰρει
-																			// εϊχαμ
-																			// λϊεαϊ
-		File directory = new File(directoryPath);// τιιμ ζδε ΰεαιχθ αβ'ΰεεδ
-													// ιφψπε ξωϊπδ ξρεβ ζδ ωξχαμ
-													// λϊεαϊ
-		ArrayList<String> csvFiles = new ArrayList<String>();// ψωιξδ ξχεωψϊ ωμ
-																// ριΰρει ωϊχαμ
-																// μϊελδ λϊεαεϊ
-																// λρθψιπβ ωμ
-																// λϊεαεϊ ωμ
-																// ϊχιεϊ
-		if (!directory.isDirectory()) {// ΰν δλϊεαϊ διΰ μΰ ϊχιιδ ζψεχ ΰμ δμεβ
-			System.out.println("directory is not exist");// δγτρδ
-			return null;// δηζψδ λμεν
+	public static ArrayList<String> ReadDirectory(String directoryPath) {// Χ”Χ¤Χ•Χ Χ§Χ¦Χ™Χ”
+																			// ΧªΧ—Χ–Χ™Χ¨
+																			// Χ¨Χ©Χ™ΧΧ”
+																			// Χ©Χ
+																			// Χ§Χ‘Χ¦Χ™
+																			// Χ΅Χ™ΧΧ΅Χ•Χ™
+																			// Χ•ΧªΧ§Χ‘Χ
+																			// Χ›ΧªΧ•Χ‘Χª
+		File directory = new File(directoryPath);// Χ¤Χ™Χ™Χ Χ–Χ”Χ• ΧΧ•Χ‘Χ™Χ§Χ Χ‘Χ’'ΧΧ•Χ•Χ”
+													// Χ™Χ¦Χ¨Χ Χ• ΧΧ©ΧªΧ Χ” ΧΧ΅Χ•Χ’ Χ–Χ” Χ©ΧΧ§Χ‘Χ
+													// Χ›ΧªΧ•Χ‘Χª
+		ArrayList<String> csvFiles = new ArrayList<String>();// Χ¨Χ©Χ™ΧΧ” ΧΧ§Χ•Χ©Χ¨Χª Χ©Χ
+																// Χ΅Χ™ΧΧ΅Χ•Χ™ Χ©ΧªΧ§Χ‘Χ
+																// ΧΧªΧ•Χ›Χ” Χ›ΧªΧ•Χ‘Χ•Χª
+																// Χ›Χ΅ΧΧ¨Χ™Χ Χ’ Χ©Χ
+																// Χ›ΧªΧ•Χ‘Χ•Χª Χ©Χ
+																// ΧªΧ§Χ™Χ•Χª
+		if (!directory.isDirectory()) {// ΧΧ Χ”Χ›ΧªΧ•Χ‘Χª Χ”Χ™Χ ΧΧ ΧªΧ§Χ™Χ™Χ” Χ–Χ¨Χ•Χ§ ΧΧ Χ”ΧΧ•Χ’
+			System.out.println("directory is not exist");// Χ”Χ“Χ¤Χ΅Χ”
+			return null;// Χ”Χ—Χ–Χ¨Χ” Χ›ΧΧ•Χ
 		}
-		File[] fileNames = directory.listFiles();// ξςψκ ξρεβ ΰεαιιχθ "τιιμ"
-													// ξχαμ ψωιξδ ωμ δχαφιν
-		if (fileNames.length == 0)// αγεχ ωδϊχιιδ μΰ ψιχδ
+		File[] fileNames = directory.listFiles();// ΧΧΆΧ¨Χ ΧΧ΅Χ•Χ’ ΧΧ•Χ‘Χ™Χ™Χ§Χ "Χ¤Χ™Χ™Χ"
+													// ΧΧ§Χ‘Χ Χ¨Χ©Χ™ΧΧ” Χ©Χ Χ”Χ§Χ‘Χ¦Χ™Χ
+		if (fileNames.length == 0)// Χ‘Χ“Χ•Χ§ Χ©Χ”ΧªΧ§Χ™Χ™Χ” ΧΧ Χ¨Χ™Χ§Χ”
 		{
-			System.out.println("directory is empty");// αεγχ ωδϊιχδ μΰ ψιχδ
+			System.out.println("directory is empty");// Χ‘Χ•Χ“Χ§ Χ©Χ”ΧªΧ™Χ§Χ” ΧΧ Χ¨Χ™Χ§Χ”
 			return null;
 		}
-		for (File file : fileNames) {// φεψϊ λϊιαδ ωμ τεψ ξχεφψ ιεφψ τιιμ=0 λξε
-										// ΰιι ατεψ ψβιμ εζδ ψυ ςγ δχεαυ δΰηψεο
-			if (!file.isDirectory() && file.getAbsolutePath().endsWith(".csv")) {// ΰν
-																					// ζδ
-																					// μΰ
-																					// ϊχιιδ
-																					// εβν
-																					// εβν
-																					// δχεαυ
-																					// πβξψ
-																					// αριεξϊ
-																					// δπλεπδ
-				csvFiles.add(file.getAbsolutePath());// ϊερισ ΰϊ δλϊεαϊ ωμ δχεαυ
-														// μϊεκ δξςψκ
-			} else if (file.isDirectory()) {// ΰν ζδ ϊχιιδ
-				csvFiles.addAll(ReadDirectory(file.getAbsolutePath()));// ϊαφς
-																		// ΰϊ
-																		// δτεπχφιδ
-																		// ςμ
-																		// δϊχιιδ
+		for (File file : fileNames) {// Χ¦Χ•Χ¨Χª Χ›ΧªΧ™Χ‘Χ” Χ©Χ Χ¤Χ•Χ¨ ΧΧ§Χ•Χ¦Χ¨ Χ™Χ•Χ¦Χ¨ Χ¤Χ™Χ™Χ=0 Χ›ΧΧ•
+										// ΧΧ™Χ™ Χ‘Χ¤Χ•Χ¨ Χ¨Χ’Χ™Χ Χ•Χ–Χ” Χ¨Χ¥ ΧΆΧ“ Χ”Χ§Χ•Χ‘Χ¥ Χ”ΧΧ—Χ¨Χ•Χ
+			if (!file.isDirectory() && file.getAbsolutePath().endsWith(".csv")) {// ΧΧ
+																					// Χ–Χ”
+																					// ΧΧ
+																					// ΧªΧ§Χ™Χ™Χ”
+																					// Χ•Χ’Χ
+																					// Χ•Χ’Χ
+																					// Χ”Χ§Χ•Χ‘Χ¥
+																					// Χ Χ’ΧΧ¨
+																					// Χ‘Χ΅Χ™Χ•ΧΧª
+																					// Χ”Χ Χ›Χ•Χ Χ”
+				csvFiles.add(file.getAbsolutePath());// ΧªΧ•Χ΅Χ™Χ£ ΧΧª Χ”Χ›ΧªΧ•Χ‘Χª Χ©Χ Χ”Χ§Χ•Χ‘Χ¥
+														// ΧΧªΧ•Χ Χ”ΧΧΆΧ¨Χ
+			} else if (file.isDirectory()) {// ΧΧ Χ–Χ” ΧªΧ§Χ™Χ™Χ”
+				csvFiles.addAll(ReadDirectory(file.getAbsolutePath()));// ΧªΧ‘Χ¦ΧΆ
+																		// ΧΧª
+																		// Χ”Χ¤Χ•Χ Χ§Χ¦Χ™Χ”
+																		// ΧΆΧ
+																		// Χ”ΧªΧ§Χ™Χ™Χ”
 			}
 		}
-		return csvFiles;// δηζψ ΰϊ δξςψκ
+		return csvFiles;// Χ”Χ—Χ–Χ¨ ΧΧª Χ”ΧΧΆΧ¨Χ
 	}
 
 	// the function get file path and return object wifi list
-	private static ArrayList<WiFi> uniteWiFisFromFiles(ArrayList<String> fileNames) {// αξχψδ
-																						// ωμπε
-																						// ξχαμ
-																						// ΰϊ
-																						// δχεαυ
-																						// ωδτεπχφιδ
-																						// δχεγξϊ
-																						// δηζιψδ
-		ArrayList<WiFi> WifiList = new ArrayList<WiFi>();// ξςψκ γιπΰξι ξρεβ
-															// ΰεαιιχθ εειτι
-		for (String fileName : fileNames) {// τεψ ξχεφψ ψυ ςμ λμ λϊεαϊ δχαφιν
-											// ωξφΰπε
+	private static ArrayList<WiFi> uniteWiFisFromFiles(ArrayList<String> fileNames) {// Χ‘ΧΧ§Χ¨Χ”
+																						// Χ©ΧΧ Χ•
+																						// ΧΧ§Χ‘Χ
+																						// ΧΧª
+																						// Χ”Χ§Χ•Χ‘Χ¥
+																						// Χ©Χ”Χ¤Χ•Χ Χ§Χ¦Χ™Χ”
+																						// Χ”Χ§Χ•Χ“ΧΧª
+																						// Χ”Χ—Χ–Χ™Χ¨Χ”
+		ArrayList<WiFi> WifiList = new ArrayList<WiFi>();// ΧΧΆΧ¨Χ Χ“Χ™Χ ΧΧΧ™ ΧΧ΅Χ•Χ’
+															// ΧΧ•Χ‘Χ™Χ™Χ§Χ Χ•Χ•Χ™Χ¤Χ™
+		for (String fileName : fileNames) {// Χ¤Χ•Χ¨ ΧΧ§Χ•Χ¦Χ¨ Χ¨Χ¥ ΧΆΧ Χ›Χ Χ›ΧªΧ•Χ‘Χª Χ”Χ§Χ‘Χ¦Χ™Χ
+											// Χ©ΧΧ¦ΧΧ Χ•
 			if (fileName.contains("WigleWifi"))
 				try {
-					FileReader fr = new FileReader(fileName);// ξωϊπδ ξρεβ "χεψΰ
-																// χαφιν" εξλπιρ
-																// μϊελε ΰϊ
-																// δχεαυ λμ τςν
-																// μτι δμεμΰδ
+					FileReader fr = new FileReader(fileName);// ΧΧ©ΧªΧ Χ” ΧΧ΅Χ•Χ’ "Χ§Χ•Χ¨Χ
+																// Χ§Χ‘Χ¦Χ™Χ" Χ•ΧΧ›Χ Χ™Χ΅
+																// ΧΧªΧ•Χ›Χ• ΧΧª
+																// Χ”Χ§Χ•Χ‘Χ¥ Χ›Χ Χ¤ΧΆΧ
+																// ΧΧ¤Χ™ Χ”ΧΧ•ΧΧΧ”
 					BufferedReader br = new BufferedReader(fr);
-					String line; // ξωξω ΰεϊπε μχψεΰ ωεεψεϊ
-					line = br.readLine(); // γιμεβ ωεψδ 1
-					line = br.readLine();// γιμεβ ωεψδ 2
-					line = br.readLine();// λψβς ΰπι αωεψδ 3
-					while (line != null) {// λμ ςεγ δωεψδ μΰ ψιχδ
-						String[] values = line.split(",");// χη ΰεϊδ ετφμ ΰεϊδ
-															// μτι δτριχιν
-						if (values[10].equals("WIFI")) {// τιμθψ ςμ ψωϊεϊ δβ'ρξ
-							String MAC = values[0];// ςξγεγδ 0 μ-
-							String SSID = values[1];// ςξεγδ 1 μ
-							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // ϊβγιψ
-																								// θιτερ
-																								// ηγω
-																								// ξρεβ
-																								// "ργτ"
-																								// εϊλπιρ
-																								// μϊελε
-																								// ΰϊ
-																								// δτεψξθ
-																								// δαΰ
-							Date time = sdf.parse(values[3]);// ςξεγδ 3 μ
+					String line; // ΧΧ©ΧΧ© ΧΧ•ΧªΧ Χ• ΧΧ§Χ¨Χ•Χ Χ©Χ•Χ•Χ¨Χ•Χª
+					line = br.readLine(); // Χ“Χ™ΧΧ•Χ’ Χ©Χ•Χ¨Χ” 1
+					line = br.readLine();// Χ“Χ™ΧΧ•Χ’ Χ©Χ•Χ¨Χ” 2
+					line = br.readLine();// Χ›Χ¨Χ’ΧΆ ΧΧ Χ™ Χ‘Χ©Χ•Χ¨Χ” 3
+					while (line != null) {// Χ›Χ ΧΆΧ•Χ“ Χ”Χ©Χ•Χ¨Χ” ΧΧ Χ¨Χ™Χ§Χ”
+						String[] values = line.split(",");// Χ§Χ— ΧΧ•ΧªΧ” Χ•Χ¤Χ¦Χ ΧΧ•ΧªΧ”
+															// ΧΧ¤Χ™ Χ”Χ¤Χ΅Χ™Χ§Χ™Χ
+						if (values[10].equals("WIFI")) {// Χ¤Χ™ΧΧΧ¨ ΧΆΧ Χ¨Χ©ΧªΧ•Χª Χ”Χ’'Χ΅Χ
+							String MAC = values[0];// ΧΆΧΧ“Χ•Χ“Χ” 0 Χ-
+							String SSID = values[1];// ΧΆΧΧ•Χ“Χ” 1 Χ
+							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // ΧªΧ’Χ“Χ™Χ¨
+																								// ΧΧ™Χ¤Χ•Χ΅
+																								// Χ—Χ“Χ©
+																								// ΧΧ΅Χ•Χ’
+																								// "Χ΅Χ“Χ¤"
+																								// Χ•ΧªΧ›Χ Χ™Χ΅
+																								// ΧΧªΧ•Χ›Χ•
+																								// ΧΧª
+																								// Χ”Χ¤Χ•Χ¨ΧΧ
+																								// Χ”Χ‘Χ
+							Date time = sdf.parse(values[3]);// ΧΆΧΧ•Χ“Χ” 3 Χ
 							int channel = Integer.parseInt(values[4]);
 							int signal = Integer.parseInt(values[5]);
 							double lat = Double.parseDouble(values[6]);
 							double lon = Double.parseDouble(values[7]);
 							double alt = Double.parseDouble(values[8]);
-							WiFi wifi = new WiFi(time, lat, lon, alt, channel, signal, MAC, SSID);// ϊλπιρ
-																									// μϊεκ
-																									// ΰεαιιχθ
-																									// δεειτι
-																									// ΰϊ
-																									// δψωιξδ
-							WifiList.add(wifi);// δερτδ μξςψκ δγιπΰξι
+							WiFi wifi = new WiFi(time, lat, lon, alt, channel, signal, MAC, SSID);// ΧªΧ›Χ Χ™Χ΅
+																									// ΧΧªΧ•Χ
+																									// ΧΧ•Χ‘Χ™Χ™Χ§Χ
+																									// Χ”Χ•Χ•Χ™Χ¤Χ™
+																									// ΧΧª
+																									// Χ”Χ¨Χ©Χ™ΧΧ”
+							WifiList.add(wifi);// Χ”Χ•Χ΅Χ¤Χ” ΧΧΧΆΧ¨Χ Χ”Χ“Χ™Χ ΧΧΧ™
 						}
-						line = br.readLine();// γμβ μωεψδ δαΰδ
+						line = br.readLine();// Χ“ΧΧ’ ΧΧ©Χ•Χ¨Χ” Χ”Χ‘ΧΧ”
 					}
 					br.close();
-				} catch (IOException | ParseException e) {// ωβιΰδ δχεαυ μΰ
-															// ξδρεβ δπλεο ΰε
-															// δχεαυ ???*
+				} catch (IOException | ParseException e) {// Χ©Χ’Χ™ΧΧ” Χ”Χ§Χ•Χ‘Χ¥ ΧΧ
+															// ΧΧ”Χ΅Χ•Χ’ Χ”Χ Χ›Χ•Χ ΧΧ•
+															// Χ”Χ§Χ•Χ‘Χ¥ ???*
 					// TODO Auto-generated catch block
 
 					e.printStackTrace();
 				}
 
 		}
-		if (WifiList.isEmpty()) {// δψωιξδ ψιχδ λι μΰ διδ λμεν αϊιχιδ
+		if (WifiList.isEmpty()) {// Χ”Χ¨Χ©Χ™ΧΧ” Χ¨Χ™Χ§Χ” Χ›Χ™ ΧΧ Χ”Χ™Χ” Χ›ΧΧ•Χ Χ‘ΧªΧ™Χ§Χ™Χ”
 			System.out.println("The files don't contain WiFi's");
 			return null;
 		}
 
-		return WifiList;// ϊηζιψ ΰϊ ΰεαιιχθ δξςψκ δγιπΰξι
+		return WifiList;// ΧªΧ—Χ–Χ™Χ¨ ΧΧª ΧΧ•Χ‘Χ™Χ™Χ§Χ Χ”ΧΧΆΧ¨Χ Χ”Χ“Χ™Χ ΧΧΧ™
 	}
 
-	// ξλιο χεαυ ΰηγ βγεμ
+	// ΧΧ›Χ™Χ Χ§Χ•Χ‘Χ¥ ΧΧ—Χ“ Χ’Χ“Χ•Χ
 	public static String printUnionCSV(String path, ArrayList<WiFi> wifilist) {
 
-		// δλϊεαϊ δεμλϊ μδιεϊ δχεαυ δηγω
+		// Χ”Χ›ΧªΧ•Χ‘Χª Χ”Χ•ΧΧ›Χª ΧΧ”Χ™Χ•Χª Χ”Χ§Χ•Χ‘Χ¥ Χ”Χ—Χ“Χ©
 		String path1 = "C:\\Users\\gilad22\\Desktop\\UnionFile.csv";
 		path = path1;
-		PrintWriter pw = null; // θιτερ ξρεβ τψιπθ εεψιθψ
+		PrintWriter pw = null; // ΧΧ™Χ¤Χ•Χ΅ ΧΧ΅Χ•Χ’ Χ¤Χ¨Χ™Χ Χ Χ•Χ•Χ¨Χ™ΧΧ¨
 		try {
 			// creating print writer for new file. (like FileReader, can't do
 			// much)
-			pw = new PrintWriter(new File(path)); // δθιτερ (ΰεαιιχθ) ξχαμ λϊεαϊ
-		} catch (FileNotFoundException e) { // λϊεαϊ μΰ πλεπδ ????*
+			pw = new PrintWriter(new File(path)); // Χ”ΧΧ™Χ¤Χ•Χ΅ (ΧΧ•Χ‘Χ™Χ™Χ§Χ) ΧΧ§Χ‘Χ Χ›ΧªΧ•Χ‘Χª
+		} catch (FileNotFoundException e) { // Χ›ΧªΧ•Χ‘Χª ΧΧ Χ Χ›Χ•Χ Χ” ????*
 
 			e.printStackTrace();
 		}
@@ -176,20 +177,20 @@ public class file2csv {
 		builder.append("Time,Lat,Alt,Lon,Signal,Frequncy,SSID,MAC\n"); // Creating
 																		// the
 																		// headers.
-																		// ηωεα
-																		// ωιϊΰιν
-																		// μωτιλδ
-																		// ωμ
-																		// δΰεαιιχθ?
-		for (WiFi wifi : wifilist) {// τεψ ξχεφψ ψυ ςμ λμ δΰεαιιχθ
-			builder.append(wifi.toStringUnionFile() + "\n"); // ωετκ ΰϊ
-																// δΰεαιιχθιν
-																// μϊεκ ρθψιπβ
-																// αιμγψ εψγ
-																// ωεψδ
+																		// Χ—Χ©Χ•Χ‘
+																		// Χ©Χ™ΧªΧΧ™Χ
+																		// ΧΧ©Χ¤Χ™Χ›Χ”
+																		// Χ©Χ
+																		// Χ”ΧΧ•Χ‘Χ™Χ™Χ§Χ?
+		for (WiFi wifi : wifilist) {// Χ¤Χ•Χ¨ ΧΧ§Χ•Χ¦Χ¨ Χ¨Χ¥ ΧΆΧ Χ›Χ Χ”ΧΧ•Χ‘Χ™Χ™Χ§Χ
+			builder.append(wifi.toStringUnionFile() + "\n"); // Χ©Χ•Χ¤Χ ΧΧª
+																// Χ”ΧΧ•Χ‘Χ™Χ™Χ§ΧΧ™Χ
+																// ΧΧªΧ•Χ Χ΅ΧΧ¨Χ™Χ Χ’
+																// Χ‘Χ™ΧΧ“Χ¨ Χ•Χ¨Χ“
+																// Χ©Χ•Χ¨Χ”
 		}
-		pw.write(builder.toString()); // λεϊα ΰϊ ϊελο ρθψιπβ αιμγψ αχεαυ ωξεηζχ
-										// ςμ ιγι τι γΰαμιε
+		pw.write(builder.toString()); // Χ›Χ•ΧªΧ‘ ΧΧª ΧªΧ•Χ›Χ Χ΅ΧΧ¨Χ™Χ Χ’ Χ‘Χ™ΧΧ“Χ¨ Χ‘Χ§Χ•Χ‘Χ¥ Χ©ΧΧ•Χ—Χ–Χ§
+										// ΧΆΧ Χ™Χ“Χ™ Χ¤Χ™ Χ“ΧΧ‘ΧΧ™Χ•
 		pw.close();
 
 		return path;
@@ -198,20 +199,20 @@ public class file2csv {
 	// the function sort and filter the xxxx.cvs file by the "matala 0
 	// requirement
 	// the function get path of union xxx.csv file and return sort&filter
-	public static ArrayList<WiFiList> FilterAndMakeList(ArrayList<WiFi> list, Filter filter) {// ξχαμιν
-																								// ξςψκ
-																								// γιπΰξι
-																								// ωμ
-																								// εειτι
-																								// εξλιπιν
-																								// ψωιξδ
-																								// ξτεμθψϊ
-		ArrayList<WiFiList> unionWiFiList = new ArrayList<WiFiList>();// ιφιψϊ
-																		// ξςψκ
-																		// ωμ
-																		// εειτιμιρθ
-		WiFiList wifilist = new WiFiList();// ιφιψϊ θιτερ ξρεβ εειτι μιρθ
-		for (WiFi wiFi : list) {// δτιλϊ λμ δεειτιν μεειτι μιρθ μτι χαεφεϊ ωμ 10
+	public static ArrayList<WiFiList> FilterAndMakeList(ArrayList<WiFi> list, Filter filter) {// ΧΧ§Χ‘ΧΧ™Χ
+																								// ΧΧΆΧ¨Χ
+																								// Χ“Χ™Χ ΧΧΧ™
+																								// Χ©Χ
+																								// Χ•Χ•Χ™Χ¤Χ™
+																							// Χ•ΧΧ›Χ™Χ Χ™Χ
+																								// Χ¨Χ©Χ™ΧΧ”
+																								// ΧΧ¤Χ•ΧΧΧ¨Χª
+		ArrayList<WiFiList> unionWiFiList = new ArrayList<WiFiList>();// Χ™Χ¦Χ™Χ¨Χª
+																		// ΧΧΆΧ¨Χ
+																		// Χ©Χ
+																		// Χ•Χ•Χ™Χ¤Χ™ΧΧ™Χ΅Χ
+		WiFiList wifilist = new WiFiList();// Χ™Χ¦Χ™Χ¨Χª ΧΧ™Χ¤Χ•Χ΅ ΧΧ΅Χ•Χ’ Χ•Χ•Χ™Χ¤Χ™ ΧΧ™Χ΅Χ
+		for (WiFi wiFi : list) {// Χ”Χ¤Χ™Χ›Χª Χ›Χ Χ”Χ•Χ•Χ™Χ¤Χ™Χ ΧΧ•Χ•Χ™Χ¤Χ™ ΧΧ™Χ΅Χ ΧΧ¤Χ™ Χ§Χ‘Χ•Χ¦Χ•Χª Χ©Χ 10
 			if ((filter == null || filter.isBelong(wiFi)) && !wifilist.add(wiFi)) {
 				/// for unionWiFiList method
 				unionWiFiList.add(wifilist);
@@ -222,8 +223,7 @@ public class file2csv {
 		for (WiFiList wiFiList : unionWiFiList) {
 			wiFiList.Take10Signals();
 		}
-
-		return unionWiFiList;
+				return unionWiFiList;
 	}
 
 	public static void printBestListsAfterFilter(String Path, ArrayList<WiFiList> list) {
@@ -243,39 +243,44 @@ public class file2csv {
 		for (WiFiList wiFiList : list) {
 			builder.append(wiFiList.Make10toString() + "\n");
 		}
-		pw.write(builder.toString()); // λεϊα ΰϊ ϊελο ρθψιπβ αιμγψ αχεαυ ωξεηζχ
-										// ςμ ιγι τι γΰαμιε
+		pw.write(builder.toString()); // Χ›Χ•ΧªΧ‘ ΧΧª ΧªΧ•Χ›Χ Χ΅ΧΧ¨Χ™Χ Χ’ Χ‘Χ™ΧΧ“Χ¨ Χ‘Χ§Χ•Χ‘Χ¥ Χ©ΧΧ•Χ—Χ–Χ§
+		
+							// ΧΆΧ Χ™Χ“Χ™ Χ¤Χ™ Χ“ΧΧ‘ΧΧ™Χ•
 		pw.close();
 	}
 
 	public static void main(String[] args) {
+	
 		String directory = "C:\\Users\\gilad22\\Desktop\\New folder";
 		ArrayList<WiFi> wifilist = uniteWiFisFromFiles(ReadDirectory(directory));
 		WiFi al = null;
-		for (WiFi wiFi : wifilist) {
-			al = wiFi;
-			System.out.println(wiFi.toStringUnionFile());
+	    for (WiFi wiFi : wifilist) {
+		al = wiFi;
+			//System.out.println(wiFi.toStringUnionFile());
 		}
+	
 		printUnionCSV("C:\\Users\\gilad22\\Desktop\\UnionFile.csv", wifilist);
 		Filter choice = null;
-		choice.isBelong(al);
+	//	choice.isBelong(al);
 		choice = new FilterTime("2017-11-22 20:24:47", "2017-11-22 20:27:47");
-		printBestListsAfterFilter("C:\\Users\\gilad22\\Desktop\\UnionFile2.csv", FilterAndMakeList(wifilist, choice));
+		printBestListsAfterFilter("C:\\Users\\gilad22\\Desktop\\UnionFile2.csv", FilterAndMakeList(wifilist, null));
 		
+		blabla=FilterAndMakeList(wifilist, null);
+		System.out.println(blabla.get(25).getList().get(1).getMAC());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:MM:ss");
 		Date date2 = null;
 		try {
-			date2 = sdf.parse("2017-11-22 20:23:02");
-			System.out.println(date2.before(sdf.parse("2016-11-22 20:23:02")));
+		date2 = sdf.parse("2017-11-22 20:23:02");
+		System.out.println(date2.before(sdf.parse("2016-11-22 20:23:02")));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		
-		// Scanner sc = new Scanner(System.in);
+	//	 Scanner sc = new Scanner(System.in);
 
 		// System.out.println(date2);
+		Kml3.ToKml();
 	}
 
 }
