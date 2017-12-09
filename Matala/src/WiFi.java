@@ -28,9 +28,46 @@ public class WiFi implements Comparable<WiFi> {
 		this.MAC = new String(MAC);
 		this.SSID = new String(SSID);
 	}
+	public int getFrequency() {
+		return frequency;
+	}
+	public void setFrequency(int frequency) {
+		this.frequency = frequency;
+	}
+	public int getSignal() {
+		return signal;
+	}
+	public void setSignal(int signal) {
+		this.signal = signal;
+	}
+	public String getMAC() {
+		return MAC;
+	}
+	public void setMAC(String mAC) {
+		MAC = mAC;
+	}
+	public String getSSID() {
+		return SSID;
+	}
+	public void setSSID(String sSID) {
+		SSID = sSID;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public void setLon(double lon) {
+		this.lon = lon;
+	}
+	public void setAlt(double alt) {
+		this.alt = alt;
+	}
 	public Date getTime() {
 		return time;
 	}
+	
 	public double getLat() {
 		return lat;
 	}
