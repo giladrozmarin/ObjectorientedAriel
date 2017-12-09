@@ -53,6 +53,56 @@ public class WiFiList {
 		}
 		return false;
 	}
+	
+	public static int getId() {
+		return id;
+	}
+	public static void setId(int id) {
+		WiFiList.id = id;
+	}
+	public int getUID() {
+		return UID;
+	}
+	public void setUID(int uID) {
+		UID = uID;
+	}
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	public double getLat() {
+		return lat;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public double getLon() {
+		return lon;
+	}
+	public void setLon(double lon) {
+		this.lon = lon;
+	}
+	public double getAlt() {
+		return alt;
+	}
+	public void setAlt(double alt) {
+		this.alt = alt;
+	}
+	public boolean isInit() {
+		return init;
+	}
+	public void setInit(boolean init) {
+		this.init = init;
+	}
+	public ArrayList<WiFi> getList() {
+		return list;
+	}
+	public void setList(ArrayList<WiFi> list) {
+		this.list = list;
+	}
+	
 	public boolean equals(WiFi wifi){
 		if (init == false)
 			return init=true;
