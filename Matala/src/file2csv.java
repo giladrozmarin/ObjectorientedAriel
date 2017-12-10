@@ -14,160 +14,161 @@ import java.util.Scanner;
 import java.text.Format;
 
 /*
- * כרגע : פונקציה שלוקחת מכל קובץ שבפורמט נתונים לאובייקט הוויפיי היא נעזרת בפונקציה שמשיגה לה כתובת כדי לעשות את זה 
- * מה אני הולך לעשות : לקחת את כל המערך הדינאמי שלי שמכיל אובייקטים של ווי פי ובעזרתו אני הולך לשפוך הכל לקובץ אחד שאותו אני אמיין לפי הדרישות
- *  שלב שני : אני הולך להפוך את הקובץ הזה לקובץ קיי אמ אל 
+ * ׳›׳¨׳’׳¢ : ׳₪׳•׳ ׳§׳¦׳™׳” ׳©׳�׳•׳§׳—׳× ׳�׳›׳� ׳§׳•׳‘׳¥ ׳©׳‘׳₪׳•׳¨׳�׳˜ ׳ ׳×׳•׳ ׳™׳� ׳�׳�׳•׳‘׳™׳™׳§׳˜ ׳”׳•׳•׳™׳₪׳™׳™ ׳”׳™׳� ׳ ׳¢׳–׳¨׳× ׳‘׳₪׳•׳ ׳§׳¦׳™׳” ׳©׳�׳©׳™׳’׳” ׳�׳” ׳›׳×׳•׳‘׳× ׳›׳“׳™ ׳�׳¢׳©׳•׳× ׳�׳× ׳–׳” 
+ * ׳�׳” ׳�׳ ׳™ ׳”׳•׳�׳� ׳�׳¢׳©׳•׳× : ׳�׳§׳—׳× ׳�׳× ׳›׳� ׳”׳�׳¢׳¨׳� ׳”׳“׳™׳ ׳�׳�׳™ ׳©׳�׳™ ׳©׳�׳›׳™׳� ׳�׳•׳‘׳™׳™׳§׳˜׳™׳� ׳©׳� ׳•׳•׳™ ׳₪׳™ ׳•׳‘׳¢׳–׳¨׳×׳• ׳�׳ ׳™ ׳”׳•׳�׳� ׳�׳©׳₪׳•׳� ׳”׳›׳� ׳�׳§׳•׳‘׳¥ ׳�׳—׳“ ׳©׳�׳•׳×׳• ׳�׳ ׳™ ׳�׳�׳™׳™׳� ׳�׳₪׳™ ׳”׳“׳¨׳™׳©׳•׳×
+ *  ׳©׳�׳‘ ׳©׳ ׳™ : ׳�׳ ׳™ ׳”׳•׳�׳� ׳�׳”׳₪׳•׳� ׳�׳× ׳”׳§׳•׳‘׳¥ ׳”׳–׳” ׳�׳§׳•׳‘׳¥ ׳§׳™׳™ ׳�׳� ׳�׳� 
  *  
- * שאלות לריכוז 
- * אקספשין, מה המשעמות של סטטיק בפונקציה ,דוגמא לג'אווה דוק נכון ,אתר נחמד לאימפורטים 
+ * ׳©׳�׳�׳•׳× ׳�׳¨׳™׳›׳•׳– 
+ * ׳�׳§׳¡׳₪׳©׳™׳�, ׳�׳” ׳”׳�׳©׳¢׳�׳•׳× ׳©׳� ׳¡׳˜׳˜׳™׳§ ׳‘׳₪׳•׳ ׳§׳¦׳™׳” ,׳“׳•׳’׳�׳� ׳�׳’'׳�׳•׳•׳” ׳“׳•׳§ ׳ ׳›׳•׳� ,׳�׳×׳¨ ׳ ׳—׳�׳“ ׳�׳�׳™׳�׳₪׳•׳¨׳˜׳™׳� 
  * 
  * 
- *  השאלה אם לקחת מה שאני רוצה מהקובץ או למחוק בו דברים האם בכלל אפשר למחוק דברים איך להוסיף את האיידיי
+ *  ׳”׳©׳�׳�׳” ׳�׳� ׳�׳§׳—׳× ׳�׳” ׳©׳�׳ ׳™ ׳¨׳•׳¦׳” ׳�׳”׳§׳•׳‘׳¥ ׳�׳• ׳�׳�׳—׳•׳§ ׳‘׳• ׳“׳‘׳¨׳™׳� ׳”׳�׳� ׳‘׳›׳�׳� ׳�׳₪׳©׳¨ ׳�׳�׳—׳•׳§ ׳“׳‘׳¨׳™׳� ׳�׳™׳� ׳�׳”׳•׳¡׳™׳£ ׳�׳× ׳”׳�׳™׳™׳“׳™׳™
  */
 
 public class file2csv {
 	 static ArrayList<WiFiList> blabla = new ArrayList();
 	// this function get directoryPath and return the cvsFile in the Folder
-	public static ArrayList<String> ReadDirectory(String directoryPath) {// הפונקציה
-																			// תחזיר
-																			// רשימה
-																			// של
-																			// קבצי
-																			// סיאסוי
-																			// ותקבל
-																			// כתובת
-		File directory = new File(directoryPath);// פייל זהו אוביקט בג'אווה
-													// יצרנו משתנה מסוג זה שמקבל
-													// כתובת
-		ArrayList<String> csvFiles = new ArrayList<String>();// רשימה מקושרת של
-																// סיאסוי שתקבל
-																// לתוכה כתובות
-																// כסטרינג של
-																// כתובות של
-																// תקיות
-		if (!directory.isDirectory()) {// אם הכתובת היא לא תקייה זרוק אל הלוג
-			System.out.println("directory is not exist");// הדפסה
-			return null;// החזרה כלום
+	public static ArrayList<String> ReadDirectory(String directoryPath) {// ׳”׳₪׳•׳ ׳§׳¦׳™׳”
+																			// ׳×׳—׳–׳™׳¨
+																			// ׳¨׳©׳™׳�׳”
+																			// ׳©׳�
+																			// ׳§׳‘׳¦׳™
+																			// ׳¡׳™׳�׳¡׳•׳™
+																			// ׳•׳×׳§׳‘׳�
+																			// ׳›׳×׳•׳‘׳×
+		File directory = new File(directoryPath);// ׳₪׳™׳™׳� ׳–׳”׳• ׳�׳•׳‘׳™׳§׳˜ ׳‘׳’'׳�׳•׳•׳”
+													// ׳™׳¦׳¨׳ ׳• ׳�׳©׳×׳ ׳” ׳�׳¡׳•׳’ ׳–׳” ׳©׳�׳§׳‘׳�
+													// ׳›׳×׳•׳‘׳×
+		ArrayList
+		<String> csvFiles = new ArrayList<String>();// ׳¨׳©׳™׳�׳” ׳�׳§׳•׳©׳¨׳× ׳©׳�
+																// ׳¡׳™׳�׳¡׳•׳™ ׳©׳×׳§׳‘׳�
+																// ׳�׳×׳•׳›׳” ׳›׳×׳•׳‘׳•׳×
+																// ׳›׳¡׳˜׳¨׳™׳ ׳’ ׳©׳�
+																// ׳›׳×׳•׳‘׳•׳× ׳©׳�
+																// ׳×׳§׳™׳•׳×
+		if (!directory.isDirectory()) {// ׳�׳� ׳”׳›׳×׳•׳‘׳× ׳”׳™׳� ׳�׳� ׳×׳§׳™׳™׳” ׳–׳¨׳•׳§ ׳�׳� ׳”׳�׳•׳’
+			System.out.println("directory is not exist");// ׳”׳“׳₪׳¡׳”
+			return null;// ׳”׳—׳–׳¨׳” ׳›׳�׳•׳�
 		}
-		File[] fileNames = directory.listFiles();// מערך מסוג אובייקט "פייל"
-													// מקבל רשימה של הקבצים
-		if (fileNames.length == 0)// בדוק שהתקייה לא ריקה
+		File[] fileNames = directory.listFiles();// ׳�׳¢׳¨׳� ׳�׳¡׳•׳’ ׳�׳•׳‘׳™׳™׳§׳˜ "׳₪׳™׳™׳�"
+													// ׳�׳§׳‘׳� ׳¨׳©׳™׳�׳” ׳©׳� ׳”׳§׳‘׳¦׳™׳�
+		if (fileNames.length == 0)// ׳‘׳“׳•׳§ ׳©׳”׳×׳§׳™׳™׳” ׳�׳� ׳¨׳™׳§׳”
 		{
-			System.out.println("directory is empty");// בודק שהתיקה לא ריקה
+			System.out.println("directory is empty");// ׳‘׳•׳“׳§ ׳©׳”׳×׳™׳§׳” ׳�׳� ׳¨׳™׳§׳”
 			return null;
 		}
-		for (File file : fileNames) {// צורת כתיבה של פור מקוצר יוצר פייל=0 כמו
-										// איי בפור רגיל וזה רץ עד הקובץ האחרון
-			if (!file.isDirectory() && file.getAbsolutePath().endsWith(".csv")) {// אם
-																					// זה
-																					// לא
-																					// תקייה
-																					// וגם
-																					// וגם
-																					// הקובץ
-																					// נגמר
-																					// בסיומת
-																					// הנכונה
-				csvFiles.add(file.getAbsolutePath());// תוסיף את הכתובת של הקובץ
-														// לתוך המערך
-			} else if (file.isDirectory()) {// אם זה תקייה
-				csvFiles.addAll(ReadDirectory(file.getAbsolutePath()));// תבצע
-																		// את
-																		// הפונקציה
-																		// על
-																		// התקייה
+		for (File file : fileNames) {// ׳¦׳•׳¨׳× ׳›׳×׳™׳‘׳” ׳©׳� ׳₪׳•׳¨ ׳�׳§׳•׳¦׳¨ ׳™׳•׳¦׳¨ ׳₪׳™׳™׳�=0 ׳›׳�׳•
+										// ׳�׳™׳™ ׳‘׳₪׳•׳¨ ׳¨׳’׳™׳� ׳•׳–׳” ׳¨׳¥ ׳¢׳“ ׳”׳§׳•׳‘׳¥ ׳”׳�׳—׳¨׳•׳�
+			if (!file.isDirectory() && file.getAbsolutePath().endsWith(".csv")) {// ׳�׳�
+																					// ׳–׳”
+																					// ׳�׳�
+																					// ׳×׳§׳™׳™׳”
+																					// ׳•׳’׳�
+																					// ׳•׳’׳�
+																					// ׳”׳§׳•׳‘׳¥
+																					// ׳ ׳’׳�׳¨
+																					// ׳‘׳¡׳™׳•׳�׳×
+																					// ׳”׳ ׳›׳•׳ ׳”
+				csvFiles.add(file.getAbsolutePath());// ׳×׳•׳¡׳™׳£ ׳�׳× ׳”׳›׳×׳•׳‘׳× ׳©׳� ׳”׳§׳•׳‘׳¥
+														// ׳�׳×׳•׳� ׳”׳�׳¢׳¨׳�
+			} else if (file.isDirectory()) {// ׳�׳� ׳–׳” ׳×׳§׳™׳™׳”
+				csvFiles.addAll(ReadDirectory(file.getAbsolutePath()));// ׳×׳‘׳¦׳¢
+																		// ׳�׳×
+																		// ׳”׳₪׳•׳ ׳§׳¦׳™׳”
+																		// ׳¢׳�
+																		// ׳”׳×׳§׳™׳™׳”
 			}
 		}
-		return csvFiles;// החזר את המערך
+		return csvFiles;// ׳”׳—׳–׳¨ ׳�׳× ׳”׳�׳¢׳¨׳�
 	}
 
 	// the function get file path and return object wifi list
-	private static ArrayList<WiFi> uniteWiFisFromFiles(ArrayList<String> fileNames) {// במקרה
-																						// שלנו
-																						// מקבל
-																						// את
-																						// הקובץ
-																						// שהפונקציה
-																						// הקודמת
-																						// החזירה
-		ArrayList<WiFi> WifiList = new ArrayList<WiFi>();// מערך דינאמי מסוג
-															// אובייקט וויפי
-		for (String fileName : fileNames) {// פור מקוצר רץ על כל כתובת הקבצים
-											// שמצאנו
+	private static ArrayList<WiFi> uniteWiFisFromFiles(ArrayList<String> fileNames) {// ׳‘׳�׳§׳¨׳”
+																						// ׳©׳�׳ ׳•
+																						// ׳�׳§׳‘׳�
+																						// ׳�׳×
+																						// ׳”׳§׳•׳‘׳¥
+																						// ׳©׳”׳₪׳•׳ ׳§׳¦׳™׳”
+																						// ׳”׳§׳•׳“׳�׳×
+																						// ׳”׳—׳–׳™׳¨׳”
+		ArrayList<WiFi> WifiList = new ArrayList<WiFi>();// ׳�׳¢׳¨׳� ׳“׳™׳ ׳�׳�׳™ ׳�׳¡׳•׳’
+															// ׳�׳•׳‘׳™׳™׳§׳˜ ׳•׳•׳™׳₪׳™
+		for (String fileName : fileNames) {// ׳₪׳•׳¨ ׳�׳§׳•׳¦׳¨ ׳¨׳¥ ׳¢׳� ׳›׳� ׳›׳×׳•׳‘׳× ׳”׳§׳‘׳¦׳™׳�
+											// ׳©׳�׳¦׳�׳ ׳•
 			if (fileName.contains("WigleWifi"))
 				try {
-					FileReader fr = new FileReader(fileName);// משתנה מסוג "קורא
-																// קבצים" ומכניס
-																// לתוכו את
-																// הקובץ כל פעם
-																// לפי הלולאה
+					FileReader fr = new FileReader(fileName);// ׳�׳©׳×׳ ׳” ׳�׳¡׳•׳’ "׳§׳•׳¨׳�
+																// ׳§׳‘׳¦׳™׳�" ׳•׳�׳›׳ ׳™׳¡
+																// ׳�׳×׳•׳›׳• ׳�׳×
+																// ׳”׳§׳•׳‘׳¥ ׳›׳� ׳₪׳¢׳�
+																// ׳�׳₪׳™ ׳”׳�׳•׳�׳�׳”
 					BufferedReader br = new BufferedReader(fr);
-					String line; // משמש אותנו לקרוא שוורות
-					line = br.readLine(); // דילוג שורה 1
-					line = br.readLine();// דילוג שורה 2
-					line = br.readLine();// כרגע אני בשורה 3
-					while (line != null) {// כל עוד השורה לא ריקה
-						String[] values = line.split(",");// קח אותה ופצל אותה
-															// לפי הפסיקים
-						if (values[10].equals("WIFI")) {// פילטר על רשתות הג'סמ
-							String MAC = values[0];// עמדודה 0 ל-
-							String SSID = values[1];// עמודה 1 ל
-							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // תגדיר
-																								// טיפוס
-																								// חדש
-																								// מסוג
-																								// "סדפ"
-																								// ותכניס
-																								// לתוכו
-																								// את
-																								// הפורמט
-																								// הבא
-							Date time = sdf.parse(values[3]);// עמודה 3 ל
+					String line; // ׳�׳©׳�׳© ׳�׳•׳×׳ ׳• ׳�׳§׳¨׳•׳� ׳©׳•׳•׳¨׳•׳×
+					line = br.readLine(); // ׳“׳™׳�׳•׳’ ׳©׳•׳¨׳” 1
+					line = br.readLine();// ׳“׳™׳�׳•׳’ ׳©׳•׳¨׳” 2
+					line = br.readLine();// ׳›׳¨׳’׳¢ ׳�׳ ׳™ ׳‘׳©׳•׳¨׳” 3
+					while (line != null) {// ׳›׳� ׳¢׳•׳“ ׳”׳©׳•׳¨׳” ׳�׳� ׳¨׳™׳§׳”
+						String[] values = line.split(",");// ׳§׳— ׳�׳•׳×׳” ׳•׳₪׳¦׳� ׳�׳•׳×׳”
+															// ׳�׳₪׳™ ׳”׳₪׳¡׳™׳§׳™׳�
+						if (values[10].equals("WIFI")) {// ׳₪׳™׳�׳˜׳¨ ׳¢׳� ׳¨׳©׳×׳•׳× ׳”׳’'׳¡׳�
+							String MAC = values[0];// ׳¢׳�׳“׳•׳“׳” 0 ׳�-
+							String SSID = values[1];// ׳¢׳�׳•׳“׳” 1 ׳�
+							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // ׳×׳’׳“׳™׳¨
+																								// ׳˜׳™׳₪׳•׳¡
+																								// ׳—׳“׳©
+																								// ׳�׳¡׳•׳’
+																								// "׳¡׳“׳₪"
+																								// ׳•׳×׳›׳ ׳™׳¡
+																								// ׳�׳×׳•׳›׳•
+																								// ׳�׳×
+																								// ׳”׳₪׳•׳¨׳�׳˜
+																								// ׳”׳‘׳�
+							Date time = sdf.parse(values[3]);// ׳¢׳�׳•׳“׳” 3 ׳�
 							int channel = Integer.parseInt(values[4]);
 							int signal = Integer.parseInt(values[5]);
 							double lat = Double.parseDouble(values[6]);
 							double lon = Double.parseDouble(values[7]);
 							double alt = Double.parseDouble(values[8]);
-							WiFi wifi = new WiFi(time, lat, lon, alt, channel, signal, MAC, SSID);// תכניס
-																									// לתוך
-																									// אובייקט
-																									// הוויפי
-																									// את
-																									// הרשימה
-							WifiList.add(wifi);// הוספה למערך הדינאמי
+							WiFi wifi = new WiFi(time, lat, lon, alt, channel, signal, MAC, SSID);// ׳×׳›׳ ׳™׳¡
+																									// ׳�׳×׳•׳�
+																									// ׳�׳•׳‘׳™׳™׳§׳˜
+																									// ׳”׳•׳•׳™׳₪׳™
+																									// ׳�׳×
+																									// ׳”׳¨׳©׳™׳�׳”
+							WifiList.add(wifi);// ׳”׳•׳¡׳₪׳” ׳�׳�׳¢׳¨׳� ׳”׳“׳™׳ ׳�׳�׳™
 						}
-						line = br.readLine();// דלג לשורה הבאה
+						line = br.readLine();// ׳“׳�׳’ ׳�׳©׳•׳¨׳” ׳”׳‘׳�׳”
 					}
 					br.close();
-				} catch (IOException | ParseException e) {// שגיאה הקובץ לא
-															// מהסוג הנכון או
-															// הקובץ ???*
+				} catch (IOException | ParseException e) {// ׳©׳’׳™׳�׳” ׳”׳§׳•׳‘׳¥ ׳�׳�
+															// ׳�׳”׳¡׳•׳’ ׳”׳ ׳›׳•׳� ׳�׳•
+															// ׳”׳§׳•׳‘׳¥ ???*
 					// TODO Auto-generated catch block
 
 					e.printStackTrace();
 				}
 
 		}
-		if (WifiList.isEmpty()) {// הרשימה ריקה כי לא היה כלום בתיקיה
+		if (WifiList.isEmpty()) {// ׳”׳¨׳©׳™׳�׳” ׳¨׳™׳§׳” ׳›׳™ ׳�׳� ׳”׳™׳” ׳›׳�׳•׳� ׳‘׳×׳™׳§׳™׳”
 			System.out.println("The files don't contain WiFi's");
 			return null;
 		}
 
-		return WifiList;// תחזיר את אובייקט המערך הדינאמי
+		return WifiList;// ׳×׳—׳–׳™׳¨ ׳�׳× ׳�׳•׳‘׳™׳™׳§׳˜ ׳”׳�׳¢׳¨׳� ׳”׳“׳™׳ ׳�׳�׳™
 	}
 
-	// מכין קובץ אחד גדול
+	// ׳�׳›׳™׳� ׳§׳•׳‘׳¥ ׳�׳—׳“ ׳’׳“׳•׳�
 	public static String printUnionCSV(String path, ArrayList<WiFi> wifilist) {
 
-		// הכתובת הולכת להיות הקובץ החדש
-		String path1 = "C:\\Users\\gilad22\\Desktop\\UnionFile.csv";
+		// ׳”׳›׳×׳•׳‘׳× ׳”׳•׳�׳›׳× ׳�׳”׳™׳•׳× ׳”׳§׳•׳‘׳¥ ׳”׳—׳“׳©
+		String path1 = "C:/Users/Xcompany/Documents/CSV/UnionFile.csv";
 		path = path1;
-		PrintWriter pw = null; // טיפוס מסוג פרינט ווריטר
+		PrintWriter pw = null; // ׳˜׳™׳₪׳•׳¡ ׳�׳¡׳•׳’ ׳₪׳¨׳™׳ ׳˜ ׳•׳•׳¨׳™׳˜׳¨
 		try {
 			// creating print writer for new file. (like FileReader, can't do
 			// much)
-			pw = new PrintWriter(new File(path)); // הטיפוס (אובייקט) מקבל כתובת
-		} catch (FileNotFoundException e) { // כתובת לא נכונה ????*
+			pw = new PrintWriter(new File(path)); // ׳”׳˜׳™׳₪׳•׳¡ (׳�׳•׳‘׳™׳™׳§׳˜) ׳�׳§׳‘׳� ׳›׳×׳•׳‘׳×
+		} catch (FileNotFoundException e) { // ׳›׳×׳•׳‘׳× ׳�׳� ׳ ׳›׳•׳ ׳” ????*
 
 			e.printStackTrace();
 		}
@@ -177,20 +178,20 @@ public class file2csv {
 		builder.append("Time,Lat,Alt,Lon,Signal,Frequncy,SSID,MAC\n"); // Creating
 																		// the
 																		// headers.
-																		// חשוב
-																		// שיתאים
-																		// לשפיכה
-																		// של
-																		// האובייקט?
-		for (WiFi wifi : wifilist) {// פור מקוצר רץ על כל האובייקט
-			builder.append(wifi.toStringUnionFile() + "\n"); // שופך את
-																// האובייקטים
-																// לתוך סטרינג
-																// בילדר ורד
-																// שורה
+																		// ׳—׳©׳•׳‘
+																		// ׳©׳™׳×׳�׳™׳�
+																		// ׳�׳©׳₪׳™׳›׳”
+																		// ׳©׳�
+																		// ׳”׳�׳•׳‘׳™׳™׳§׳˜?
+		for (WiFi wifi : wifilist) {// ׳₪׳•׳¨ ׳�׳§׳•׳¦׳¨ ׳¨׳¥ ׳¢׳� ׳›׳� ׳”׳�׳•׳‘׳™׳™׳§׳˜
+			builder.append(wifi.toStringUnionFile() + "\n"); // ׳©׳•׳₪׳� ׳�׳×
+																// ׳”׳�׳•׳‘׳™׳™׳§׳˜׳™׳�
+																// ׳�׳×׳•׳� ׳¡׳˜׳¨׳™׳ ׳’
+																// ׳‘׳™׳�׳“׳¨ ׳•׳¨׳“
+																// ׳©׳•׳¨׳”
 		}
-		pw.write(builder.toString()); // כותב את תוכן סטרינג בילדר בקובץ שמוחזק
-										// על ידי פי דאבליו
+		pw.write(builder.toString()); // ׳›׳•׳×׳‘ ׳�׳× ׳×׳•׳›׳� ׳¡׳˜׳¨׳™׳ ׳’ ׳‘׳™׳�׳“׳¨ ׳‘׳§׳•׳‘׳¥ ׳©׳�׳•׳—׳–׳§
+										// ׳¢׳� ׳™׳“׳™ ׳₪׳™ ׳“׳�׳‘׳�׳™׳•
 		pw.close();
 
 		return path;
@@ -199,20 +200,20 @@ public class file2csv {
 	// the function sort and filter the xxxx.cvs file by the "matala 0
 	// requirement
 	// the function get path of union xxx.csv file and return sort&filter
-	public static ArrayList<WiFiList> FilterAndMakeList(ArrayList<WiFi> list, Filter filter) {// מקבלים
-																								// מערך
-																								// דינאמי
-																								// של
-																								// וויפי
-																							// ומכינים
-																								// רשימה
-																								// מפולטרת
-		ArrayList<WiFiList> unionWiFiList = new ArrayList<WiFiList>();// יצירת
-																		// מערך
-																		// של
-																		// וויפיליסט
-		WiFiList wifilist = new WiFiList();// יצירת טיפוס מסוג וויפי ליסט
-		for (WiFi wiFi : list) {// הפיכת כל הוויפים לוויפי ליסט לפי קבוצות של 10
+	public static ArrayList<WiFiList> FilterAndMakeList(ArrayList<WiFi> list, Filter filter) {// ׳�׳§׳‘׳�׳™׳�
+																								// ׳�׳¢׳¨׳�
+																								// ׳“׳™׳ ׳�׳�׳™
+																								// ׳©׳�
+																								// ׳•׳•׳™׳₪׳™
+																							// ׳•׳�׳›׳™׳ ׳™׳�
+																								// ׳¨׳©׳™׳�׳”
+																								// ׳�׳₪׳•׳�׳˜׳¨׳×
+		ArrayList<WiFiList> unionWiFiList = new ArrayList<WiFiList>();// ׳™׳¦׳™׳¨׳×
+																		// ׳�׳¢׳¨׳�
+																		// ׳©׳�
+																		// ׳•׳•׳™׳₪׳™׳�׳™׳¡׳˜
+		WiFiList wifilist = new WiFiList();// ׳™׳¦׳™׳¨׳× ׳˜׳™׳₪׳•׳¡ ׳�׳¡׳•׳’ ׳•׳•׳™׳₪׳™ ׳�׳™׳¡׳˜
+		for (WiFi wiFi : list) {// ׳”׳₪׳™׳›׳× ׳›׳� ׳”׳•׳•׳™׳₪׳™׳� ׳�׳•׳•׳™׳₪׳™ ׳�׳™׳¡׳˜ ׳�׳₪׳™ ׳§׳‘׳•׳¦׳•׳× ׳©׳� 10
 			if ((filter == null || filter.isBelong(wiFi)) && !wifilist.add(wiFi)) {
 				/// for unionWiFiList method
 				unionWiFiList.add(wifilist);
@@ -229,29 +230,29 @@ public class file2csv {
 	public static void printBestListsAfterFilter(String Path, ArrayList<WiFiList> list) {
 		PrintWriter pw = null;
 		StringBuilder builder = new StringBuilder();
-		Path = "C:\\Users\\gilad22\\Desktop\\UnionFile2.csv";
+		Path = "C:/Users/Xcompany/Documents/CSV/UnionFile2.csv";
 		try {
 			pw = new PrintWriter(Path);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		builder.append("Time,ID,Lat,Alt,Lon,#WiFi Networks" + ",Signal1,Frequncy1,SSID1,MAC1"
-				+ ",Signal2,Frequncy2,SSID2,MAC2" + ",Signal3,Frequncy3,SSID3,MAC3" + ",Signal4,Frequncy4,SSID4,MAC4"
+		builder.append("Time,ID,Lat,Alt,Lon,#WiFi Networks" + ",SSID1,MAC1,Frequncy1,Signal1"
+				+ ",SSID2,MAC2,Frequncy2,Signal2" + ",SSID3,MAC3,Frequncy3,Signal3" + ",SSID4,MAC4,Frequncy4,Signal4"
 				+ ",Signal5,Frequncy5,SSID2,MAC5" + ",Signal6,Frequncy6,SSID6,MAC6" + ",Signal7,Frequncy7,SSID7,MAC7"
-				+ ",Signal8,Frequncy8,SSID8,MAC8" + ",Signal9,Frequncy9,SSID9,MAC9"
-				+ ",Signal10,Frequncy10,SSID10,MAC10\n");
+				+ ",SSID8,MAC8,Frequncy8,Signal8" + ",SSID9,MAC9,Frequncy9,Signal9"
+				+ ",SSID10,MAC10,Frequncy10,Signal10\n");
 		for (WiFiList wiFiList : list) {
 			builder.append(wiFiList.Make10toString() + "\n");
 		}
-		pw.write(builder.toString()); // כותב את תוכן סטרינג בילדר בקובץ שמוחזק
+		pw.write(builder.toString()); // ׳›׳•׳×׳‘ ׳�׳× ׳×׳•׳›׳� ׳¡׳˜׳¨׳™׳ ׳’ ׳‘׳™׳�׳“׳¨ ׳‘׳§׳•׳‘׳¥ ׳©׳�׳•׳—׳–׳§
 		
-							// על ידי פי דאבליו
+							// ׳¢׳� ׳™׳“׳™ ׳₪׳™ ׳“׳�׳‘׳�׳™׳•
 		pw.close();
 	}
 
 	public static void main(String[] args) {
 	
-		String directory = "C:\\Users\\gilad22\\Desktop\\New folder";
+		String directory = "C:/Users/Xcompany/Documents/CSV/";
 		ArrayList<WiFi> wifilist = uniteWiFisFromFiles(ReadDirectory(directory));
 		WiFi al = null;
 	    for (WiFi wiFi : wifilist) {
@@ -259,14 +260,12 @@ public class file2csv {
 			//System.out.println(wiFi.toStringUnionFile());
 		}
 	
-		printUnionCSV("C:\\Users\\gilad22\\Desktop\\UnionFile.csv", wifilist);
+		printUnionCSV("C:/Users/Xcompany/Documents/CSV/UnionFile.csv", wifilist);
 		Filter choice = null;
 	//	choice.isBelong(al);
 		choice = new FilterTime("2017-11-22 20:24:47", "2017-11-22 20:27:47");
-		printBestListsAfterFilter("C:\\Users\\gilad22\\Desktop\\UnionFile2.csv", FilterAndMakeList(wifilist, null));
-		
+		printBestListsAfterFilter("C:/Users/Xcompany/Documents/CSV/UnionFile2.csv", FilterAndMakeList(wifilist, null));
 		blabla=FilterAndMakeList(wifilist, null);
-		System.out.println(blabla.get(25).getList().get(1).getMAC());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:MM:ss");
 		Date date2 = null;
 		try {
