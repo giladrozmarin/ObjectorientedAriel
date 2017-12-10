@@ -50,15 +50,16 @@ public class file2csv {
 					FileReader fr = new FileReader(fileName);// 
 					BufferedReader br = new BufferedReader(fr);
 					String line; //
-					line = br.readLine(); // 1
-					line = br.readLine();// 2
-					line = br.readLine();// �
+					line = br.readLine(); // 
+					line = br.readLine();// 
+					line = br.readLine();// 
 					while (line != null) {// 
 						String[] values = line.split(",");// 
 															//
 						if (values[10].equals("WIFI")) {// 
 							String MAC = values[0];//
 							String SSID = values[1];//
+							
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 							Date time = sdf.parse(values[3]);//
 							int channel = Integer.parseInt(values[4]);
@@ -171,10 +172,10 @@ public class file2csv {
 	
 		printUnionCSV("C:/Mivne/UnionFile.csv", wifilist);
 		Filter choice = null;
-	//	choice.isBelong(al);
-		choice = new FilterTime("2017-11-22 20:24:47", "2017-11-22 20:27:47");
-		printBestListsAfterFilter("C:/Mivne/UnionFile2.csv", FilterAndMakeList(wifilist, null));
-		blabla=FilterAndMakeList(wifilist, null);
+		choice = new FilterTime("2017-11-22 20:24:47", "2017-11-22 20:30:47");
+		choice.isBelong(al);
+		printBestListsAfterFilter("C:/Mivne/UnionFile2.csv", FilterAndMakeList(wifilist,choice));
+		blabla=FilterAndMakeList(wifilist, choice);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:MM:ss");
 		Date date2 = null;
 		try {
