@@ -33,11 +33,11 @@ public class Kml3 extends file2csv{
 				.withDescription(" Mac: "+(blabla.get(i).getList().get(j).getMAC())+
 			" Signal: "+(blabla.get(i).getList().get(j).getSignal())+" SSID: "+(blabla.get(i).getList().get(j).getSSID())+" Frequency: "+(blabla.get(i).getList().get(j).getFrequency()))
 				.withTimePrimitive(t).createAndSetPoint().
-				addToCoordinates((blabla.get(i).getAlt()),(blabla.get(i).getLat()));
+				addToCoordinates((blabla.get(i).getList().get(j).getLon()),(blabla.get(i).getList().get(j).getLat()));
 			}}
 
 			try {
-				kml.marshal(new File("C:\\Users\\gilad22\\Desktop\\KML.kml"));
+				kml.marshal(new File("C:\\Mivne\\KML.kml"));
 				System.out.println("completed");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
